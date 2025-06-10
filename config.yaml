@@ -1,0 +1,106 @@
+# Customer Churn Prediction Configuration File
+# This file contains all configuration settings for the project
+
+# Project Information
+project:
+  name: "customer-churn-prediction"
+  version: "1.0.0"
+  description: "Customer churn prediction and analysis system"
+  author: "Augment Agent"
+
+# Data Configuration
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  sample_data_path: "data/sample"
+  dataset_filename: "telco_customer_churn.csv"
+  target_column: "Churn"
+  customer_id_column: "customerID"
+
+# Model Configuration
+models:
+  save_path: "models"
+  random_state: 42
+  test_size: 0.2
+  validation_size: 0.2
+  cv_folds: 5
+  scoring_metric: "accuracy"
+
+# Feature Engineering Configuration
+features:
+  scaling_method: "standard"  # Options: standard, minmax, robust
+  encoding_method: "auto"     # Options: auto, onehot, label, target
+  feature_selection_method: "auto"  # Options: auto, univariate, rfe, model_based
+  max_features: 50
+  correlation_threshold: 0.95
+
+# Training Configuration
+training:
+  hyperparameter_tuning: true
+  early_stopping: true
+  class_weight: "balanced"
+  n_jobs: -1
+
+# Evaluation Configuration
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1_score", "roc_auc"]
+  threshold: 0.5
+  plot_confusion_matrix: true
+  plot_roc_curve: true
+  plot_feature_importance: true
+
+# Dashboard Configuration
+dashboard:
+  host: "localhost"
+  port: 8501
+  debug: false
+  cache_data: true
+  max_upload_size: 200  # MB
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/churn_prediction.log"
+
+# Model-Specific Configurations
+model_configs:
+  logistic_regression:
+    C: 1.0
+    penalty: "l2"
+    solver: "liblinear"
+    max_iter: 1000
+    class_weight: "balanced"
+  
+  random_forest:
+    n_estimators: 100
+    max_depth: null
+    min_samples_split: 2
+    min_samples_leaf: 1
+    max_features: "sqrt"
+    bootstrap: true
+    class_weight: "balanced"
+  
+  gradient_boosting:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 1.0
+    colsample_bytree: 1.0
+    reg_alpha: 0
+    reg_lambda: 1
+  
+  svm:
+    C: 1.0
+    kernel: "rbf"
+    gamma: "scale"
+    probability: true
+    class_weight: "balanced"
+
+# Business Rules and Thresholds
+business:
+  high_risk_threshold: 0.7
+  medium_risk_threshold: 0.4
+  churn_cost_per_customer: 500
+  acquisition_cost_per_customer: 200
+  average_customer_lifetime_value: 2000
