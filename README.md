@@ -2,7 +2,7 @@
 
 A comprehensive machine learning pipeline to predict customer churn using Python, scikit-learn, and create an interactive dashboard for business insights.
 
-## 📋 Project Overview
+## 📋 Project Overview 
 
 This project develops an end-to-end data science solution for predicting customer churn in a telecommunications company. The system includes comprehensive data analysis, feature engineering, multiple ML models, performance evaluation, and an interactive dashboard for business stakeholders.
 
